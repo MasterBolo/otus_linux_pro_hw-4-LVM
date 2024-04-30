@@ -35,7 +35,8 @@
 
  Создаю в домашней директории Vagrantfile, в тело данного файла копирую содержимое Vagrantfile репозитория git-a:https://gitlab.com/otus_linux/stands-03-lvm.
  
- Собираю стенд командой: - [nur@test hw-4]$ vagrant up
+ Собираю стенд командой:
+[nur@test hw-4]$ vagrant up
  
  Подключаюсь к стенду: -[nur@test hw-4]$ vagrant ssh
  
