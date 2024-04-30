@@ -52,7 +52,7 @@
  ``` [root@lvm ~]# vgcreate vg_root /dev/sdb ```
  > Volume group "vg_root" successfully created
   
- Создаем логический том "lv_root" на основе volume-группы "vg_root", со всем доступным дисковом пространством:
+ Создаем логический том "lv_root" на основе volume-группы "vg_root", со всем доступным дисковым пространством:
  
  ``` [root@lvm ~]# lvcreate -n lv_root -l+100%FREE /dev/vg_root ```
  > Logical volume "lv_root" created.
