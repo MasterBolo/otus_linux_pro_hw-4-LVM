@@ -266,6 +266,7 @@ Cмотрим какие блочные устройства и тома име�
  > done
  
  ``` [root@lvm /]# cd /boot ; for i in `ls initramfs-*img`; \ ``` 
+ 
  ```> do dracut -v $i `echo $i|sed "s/initramfs-//g; \```
  
  ```> s/.img//g"` --force; done ```
@@ -359,8 +360,9 @@ Cмотрим какие блочные устройства и тома име�
  
   Редактируем fstab для автоматического монтирования /home:
   
-   ``` [root@lvm ~]#  echo "`blkid | grep Home | awk '{print $2}'` \
-   >/home xfs defaults 0 0" >> /etc/fstab ```
+  ``` [root@lvm ~]#  echo "`blkid | grep Home | awk '{print $2}'` \ ```
+   
+  ``` > /home xfs defaults 0 0" >> /etc/fstab ```
    
    ## 4. Работа со снапшотами 
    
