@@ -69,22 +69,22 @@ Cмотрим какие блочные устройства и тома име�
 
 Помечаем блочное устройство "sdb" как физическое устройство:
 
-``` [root@lvm ~]# pvcreate /dev/sdb ```
+``` [root@lvm ~]# pvcreate /dev/sdb 
  > Physical volume "/dev/sdb" successfully created.
-  
+```  
  Создаем volume-группу "vg_root" и включаем в группу физическое устройство "sdb":
  
- ``` [root@lvm ~]# vgcreate vg_root /dev/sdb ```
+ ``` [root@lvm ~]# vgcreate vg_root /dev/sdb 
  > Volume group "vg_root" successfully created
-  
+``` 
  Создаем логический том "lv_root" на основе volume-группы "vg_root", со всем доступным дисковым пространством:
  
- ``` [root@lvm ~]# lvcreate -n lv_root -l+100%FREE /dev/vg_root ```
+ ``` [root@lvm ~]# lvcreate -n lv_root -l+100%FREE /dev/vg_root
  > Logical volume "lv_root" created.
-  
+```  
  Создаем на томе "lv_root" файловую систему и монтируем её:
  
- ``` [root@lvm ~]# mkfs.xfs /dev/vg_root/lv_root ```
+ ``` [root@lvm ~]# mkfs.xfs /dev/vg_root/lv_root 
  
  >  meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
 
@@ -101,15 +101,18 @@ Cмотрим какие блочные устройства и тома име�
  >           =                       sectsz=512   sunit=0 blks, lazy-count=1
 
  >  realtime  =none                   extsz=4096   blocks=0, rtextents=0
+
+````
   
  ``` [root@lvm ~]# mount /dev/vg_root/lv_root /mnt ```
  
 Скопируем все данные с логического тома "LogVol00" на смонтированный том "lv_root"
 
-  ``` [root@lvm ~]# xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt ```
+  ``` [root@lvm ~]# xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt 
  > .........
  
  > xfsrestore: Restore Status: SUCCESS
+````
   
 Проверим содержимое /mnt:
 
